@@ -24,14 +24,9 @@ export default function RootLayout({
           name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=0"
         />
-        <Suspense>
-          <script
-            src="https://kit.fontawesome.com/05cfe3f903.js"
-            crossOrigin="anonymous"
-          ></script>
-        </Suspense>
       </head>
       <body className={`${inter.className}`}>
+        <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
         <NavBar />
         {children}
         <div className="w-full flex flex-row p-5 items-center">

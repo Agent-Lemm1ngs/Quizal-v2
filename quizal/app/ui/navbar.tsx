@@ -2,6 +2,10 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
+import React from "react";
+
+import { TbLogin2 } from "react-icons/tb";
+import { FaBars } from "react-icons/fa";
 
 export default function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,11 +25,10 @@ export default function NavBar() {
             Login
           </Link>
           <Link
-            suppressHydrationWarning
             href="/register"
             className="btn  border-2 border-pink-500 text-2xl text-pink-500 gap-2 items-center flex flex-row"
           >
-            <i className="fa-solid fa-right-to-bracket "></i>
+            <TbLogin2 />
             Register
           </Link>
         </div>
@@ -34,7 +37,7 @@ export default function NavBar() {
             className="btn btn-primary text-pink-500"
             onClick={() => setIsOpen(!isOpen)}
           >
-            <i className="fa fa-bars"></i>
+            <FaBars />
           </button>
         </div>
       </ul>
@@ -47,7 +50,7 @@ export default function NavBar() {
             href={"/register"}
             className="btn text-xl border-2 border-pink-500 text-pink-500 gap-2 justify-center w-full flex flex-row"
           >
-            <i className="fa-solid fa-right-to-bracket "></i>
+            <TbLogin2 />
             Register
           </Link>
         </div>
