@@ -12,21 +12,21 @@ export default function NavBar() {
 
   return (
     <div>
-      <ul className="bg-pink-50 p-3 flex flex-row w-full gap-5 border-b-2 border-pink-200">
+      <ul className="bg-white p-3 flex flex-row w-full gap-5 border-b-2 border-blue-200">
         <Image src="/logo.svg" width={50} height={50} alt="logo" />
-        <Link href="/" className="btn btn-primary text-pink-500">
+        <Link href="/" className="btn btn-primary text-blue-400">
           Quizal
         </Link>
         <div className="flex-grow justify-end flex-row w-full items-center gap-5 hidden sm:flex">
           <Link
             href="/login"
-            className="btn text-2xl text-pink-500 gap-2 items-center flex flex-row"
+            className="btn text-2xl text-blue-400 gap-2 items-center flex flex-row"
           >
             Login
           </Link>
           <Link
             href="/register"
-            className="btn  border-2 border-pink-500 text-2xl text-pink-500 gap-2 items-center flex flex-row"
+            className="btn  border-2 border-blue-400 text-2xl text-blue-400 gap-2 items-center flex flex-row"
           >
             <TbLogin2 />
             Register
@@ -34,7 +34,7 @@ export default function NavBar() {
         </div>
         <div className="flex-grow justify-end flex-row w-full items-center gap-5 flex sm:hidden">
           <button
-            className="btn btn-primary text-pink-500"
+            className="btn btn-primary text-blue-400"
             onClick={() => setIsOpen(!isOpen)}
           >
             <FaBars />
@@ -42,13 +42,13 @@ export default function NavBar() {
         </div>
       </ul>
       {isOpen && (
-        <div className="w-full flex flex-col gap-5 text-center absolute shadow-xl p-5 bg-pink-50 sm:hidden">
-          <Link href={"/login"} className="btn text-xl text-pink-500">
+        <div className="w-full flex flex-col gap-5 text-center absolute shadow-xl p-5 bg-white sm:hidden">
+          <Link href={"/login"} className="btn text-xl text-blue-400">
             Login
           </Link>
           <Link
             href={"/register"}
-            className="btn text-xl border-2 border-pink-500 text-pink-500 gap-2 justify-center w-full flex flex-row"
+            className="btn text-xl border-2 border-blue-400 text-blue-400 gap-2 justify-center w-full flex flex-row"
           >
             <TbLogin2 />
             Register

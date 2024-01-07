@@ -3,6 +3,9 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Suspense } from "react";
 const inter = Inter({ subsets: ["latin"] });
+import Script from "next/script";
+import Head from "next/head";
+
 import Link from "next/link";
 import NavBar from "./ui/navbar";
 export const metadata: Metadata = {
@@ -18,19 +21,22 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
+      <Head>
         <meta property="og:image" content="<generated>" />
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=0"
         />
-      </head>
+        <Script
+          src="https://www.hcaptcha.com/1/api.js"
+          strategy="beforeInteractive"
+        />
+      </Head>
       <body className={`${inter.className}`}>
-        <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
         <NavBar />
         {children}
         <div className="w-full flex flex-row p-5 items-center">
-          <Link className="btn  text-pink-500 font-bold text-2xl" href="/">
+          <Link className="btn  text-blue-400 font-bold text-2xl" href="/">
             Quizal
           </Link>
           <h1 className="flex-grow flex justify-end">© 2023</h1>
