@@ -1,5 +1,6 @@
 import NextAuthOptions from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
+import { toast } from "react-toastify";
 const options: NextAuthOptions = {
   providers: [
     CredentialsProvider({
@@ -13,6 +14,7 @@ const options: NextAuthOptions = {
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
+        console.log(credentials);
         const user = {
           id: 1,
           name: "J Smith",

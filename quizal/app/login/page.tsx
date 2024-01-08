@@ -3,35 +3,69 @@ import Image from "next/image";
 import Link from "next/link";
 import { Suspense, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import "react-toastify/dist/ReactToastify.css";
 import { type NextRequest } from "next/server";
-
+import { signIn, useSession } from "next-auth/react";
+function check_session() {
+  const session = useSession();
+  if (session) {
+    return true;
+  }
+  return false;
+}
 export default function Login() {
+  //if (check_session()) {
+  //router.push("/dashboard");
+  // }
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const error = searchParams.get("error");
+  console.log(error);
+
   const handleLogin = async (e) => {
     e.preventDefault();
     setIsLoading(true);
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData);
-    toast.success("Succesfully logged in! Redirecting...", {
-      position: "top-right",
-      autoClose: 2000,
-      hideProgressBar: false,
-      closeOnClick: false,
-      pauseOnHover: false,
-      draggable: false,
-      progress: undefined,
-      theme: "light",
+    let value = await signIn("credentials", {
+      email: data.email,
+      password: data.password,
+      //callbackUrl: "/dashboard",
+      error: "Custom error message",
     });
-    setTimeout(() => {
-      router.push("/dashboard");
-    }, 3000);
+    console.log(value);
+    if (true) {
+      if (!value.error) {
+        toast.success("Succesfully logged in! Redirecting...", {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: false,
+          draggable: false,
+          progress: undefined,
+          theme: "light",
+        });
+      } else {
+        toast.error(value.error, {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: false,
+          draggable: false,
+          progress: undefined,
+          theme: "light",
+        });
+      }
+      setIsLoading(false);
+    }
   };
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   return (
-    <main className="flex flex-col bg-blue-100 items-center w-full h-screen p-5">
+    <main className="flex flex-col bg-blue-100 items-center w-full h-dvh p-5">
       <ToastContainer />
       <div className="p-10 border-2 rounded-lg bg-white shadow-xl w-full h-4/5 sm:w-4/5   max-w-4xl gap-10 flex flex-col lg:flex-row">
         <form
@@ -69,7 +103,7 @@ export default function Login() {
               className="border-2 p-2 duration-75 w-full outline-none focus:border-blue-400 focus:shadow rounded"
             />
           </div>
-
+          {error && <h1 className="text-red-500">{error}</h1>}
           <button
             type="submit"
             className="btn border-2 border-blue-400 font-bold text-xl p-3 rounded w-full disabled:cursor-progress disabled:opacity-50"

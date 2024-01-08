@@ -22,7 +22,12 @@ export default function Home() {
             </Link>
           </div>
           <div className="flex flex-col ">
-            <Image src="/logo.svg" width={250} height={250} alt="logo" />
+            <Image
+              src="/drawings/shapes.svg"
+              width={250}
+              height={250}
+              alt="logo"
+            />
           </div>
         </div>
       </div>
