@@ -7,6 +7,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import "react-toastify/dist/ReactToastify.css";
 import { type NextRequest } from "next/server";
 import { signIn, useSession } from "next-auth/react";
+import Captcha from "../ui/captcha";
 function check_session() {
   const session = useSession();
   if (session) {
@@ -65,7 +66,7 @@ export default function Login() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   return (
-    <main className="flex flex-col bg-blue-100 items-center w-full h-dvh p-5">
+    <main className="flex flex-col bg-blue-100 items-center w-full h-screen p-5">
       <ToastContainer />
       <div className="p-10 border-2 rounded-lg bg-white shadow-xl w-full h-4/5 sm:w-4/5   max-w-4xl gap-10 flex flex-col lg:flex-row">
         <form
@@ -103,6 +104,7 @@ export default function Login() {
               className="border-2 p-2 duration-75 w-full outline-none focus:border-blue-400 focus:shadow rounded"
             />
           </div>
+          <Captcha className="w-full" />
           {error && <h1 className="text-red-500">{error}</h1>}
           <button
             type="submit"

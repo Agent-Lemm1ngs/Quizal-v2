@@ -27,10 +27,7 @@ export default function RootLayout({
           name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=0"
         />
-        <Script
-          src="https://www.hcaptcha.com/1/api.js"
-          strategy="beforeInteractive"
-        />
+        <Script src="https://www.google.com/recaptcha/enterprise.js?render=6Lf1u0opAAAAAGwJDlV_kX1g96EJxS3PubyvvjzG" />
       </Head>
       <body className={`${inter.className}`}>
         <NavBar />

@@ -43,11 +43,16 @@ export default function NavBar() {
       </ul>
       {isOpen && (
         <div className="w-full flex flex-col gap-5 text-center absolute shadow-xl p-5 bg-white sm:hidden">
-          <Link href={"/login"} className="btn text-xl text-blue-400">
+          <Link
+            href={"/login"}
+            onClick={() => setIsOpen(false)}
+            className="btn text-xl text-blue-400"
+          >
             Login
           </Link>
           <Link
             href={"/register"}
+            onClick={() => setIsOpen(false)}
             className="btn text-xl border-2 border-blue-400 text-blue-400 gap-2 justify-center w-full flex flex-row"
           >
             <TbLogin2 />
