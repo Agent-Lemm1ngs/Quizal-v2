@@ -33,10 +33,17 @@ export default function RootLayout({
         <NavBar />
         {children}
         <div className="w-full flex flex-row p-5 items-center">
-          <Link className="btn  text-blue-400 font-bold text-2xl" href="/">
-            Quizal
-          </Link>
-          <h1 className="flex-grow flex justify-end">© 2023</h1>
+          <div className="flex-grow flex-row gap-2 flex items-center">
+            <Link className="btn  text-blue-400 font-bold text-2xl" href="/">
+              Quizal
+            </Link>
+            <h1>© 2023</h1>
+          </div>
+          <h1 className="justify-end flex-grow flex-row gap-2 flex items-center">
+            <Link className="btn " href="/terms">
+              Terms
+            </Link>
+          </h1>
         </div>
       </body>
     </html>

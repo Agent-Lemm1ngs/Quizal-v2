@@ -105,6 +105,12 @@ export default function Login() {
             />
           </div>
           <Captcha className="w-full" />
+          <h1 className="italic text-gray-400">
+            By pressing Login, you agree to our{" "}
+            <Link href="/terms" className="">
+              Terms and Conditions
+            </Link>
+          </h1>
           {error && <h1 className="text-red-500">{error}</h1>}
           <button
             type="submit"
