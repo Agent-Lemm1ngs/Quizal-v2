@@ -107,7 +107,7 @@ export default function Login() {
           <Captcha className="w-full" />
           <h1 className="italic text-gray-400">
             By pressing Login, you agree to our{" "}
-            <Link href="/terms" className="">
+            <Link href="/terms" className="hover:underline">
               Terms and Conditions
             </Link>
           </h1>

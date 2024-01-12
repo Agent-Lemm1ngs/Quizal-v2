@@ -31,11 +31,11 @@ export default function Terms() {
             assistance to the Client in the most appropriate manner for the
             express purpose of meeting the Client’s needs in respect of
             provision of the Company’s stated services, in accordance with and
-            subject to, prevailing law of Netherlands. Any use of the above
-            terminology or other words in the singular, plural, capitalization
-            and/or he/she or they, are taken as interchangeable and therefore as
-            referring to same. Our Terms and Conditions were created with the
-            help of the{" "}
+            subject to, prevailing law of the United Kingdom. Any use of the
+            above terminology or other words in the singular, plural,
+            capitalization and/or he/she or they, are taken as interchangeable
+            and therefore as referring to same. Our Terms and Conditions were
+            created with the help of the{" "}
             <a href="https://www.app-privacy-policy.com/app-terms-conditions-generator/">
               App Terms and Conditions Generator from App-Privacy-Policy.com
             </a>
@@ -65,49 +65,51 @@ export default function Terms() {
           <p>
             Parts of this app offer an opportunity for users to post and
             exchange opinions and information in certain areas of the website.
-            Quizal does not filter, edit, publish or review Comments prior to
-            their presence on the website. Comments do not reflect the views and
-            opinions of Quizal, its agents and/or affiliates. Comments reflect
-            the views and opinions of the person who post their views and
-            opinions. To the extent permitted by applicable laws, Quizal shall
-            not be liable for the Comments or for any liability, damages or
-            expenses caused and/or suffered as a result of any use of and/or
-            posting of and/or appearance of the Comments on this website.
+            Quizal does not filter, edit, publish or review ("Cards", "Decks")
+            prior to their presence on the website. ("Cards", "Decks") do not
+            reflect the views and opinions of Quizal, its agents and/or
+            affiliates. ("Cards", "Decks") reflect the views and opinions of the
+            person who post their views and opinions. To the extent permitted by
+            applicable laws, Quizal shall not be liable for the ("Cards",
+            "Decks") or for any liability, damages or expenses caused and/or
+            suffered as a result of any use of and/or posting of and/or
+            appearance of the ("Cards", "Decks") on this website.
           </p>
 
           <p>
-            Quizal reserves the right to monitor all Comments and to remove any
-            Comments which can be considered inappropriate, offensive or causes
-            breach of these Terms and Conditions.
+            Quizal reserves the right to monitor all ("Cards", "Decks") and to
+            remove any ("Cards", "Decks") which can be considered inappropriate,
+            offensive or causes breach of these Terms and Conditions.
           </p>
 
           <p>You warrant and represent that:</p>
 
           <ul className="list-disc ml-5">
             <li>
-              You are entitled to post the Comments on our App and have all
-              necessary licenses and consents to do so;
+              You are entitled to post the ("Cards", "Decks") on our App and
+              have all necessary licenses and consents to do so;
             </li>
             <li>
-              The Comments do not invade any intellectual property right,
-              including without limitation copyright, patent or trademark of any
-              third party;
+              The ("Cards", "Decks") do not invade any intellectual property
+              right, including without limitation copyright, patent or trademark
+              of any third party;
             </li>
             <li>
-              The Comments do not contain any defamatory, libelous, offensive,
-              indecent or otherwise unlawful material which is an invasion of
-              privacy
+              The ("Cards", "Decks") do not contain any defamatory, libelous,
+              offensive, indecent or otherwise unlawful material which is an
+              invasion of privacy
             </li>
             <li>
-              The Comments will not be used to solicit or promote business or
-              custom or present commercial activities or unlawful activity.
+              The ("Cards", "Decks") will not be used to solicit or promote
+              business or custom or present commercial activities or unlawful
+              activity.
             </li>
           </ul>
 
           <p>
             You hereby grant Quizal a non-exclusive license to use, reproduce,
             edit and authorize others to use, reproduce and edit any of your
-            Comments in any and all forms, formats or media.
+            ("Cards", "Decks") in any and all forms, formats or media.
           </p>
         </div>{" "}
         <div class="flex flex-col gap-2">
