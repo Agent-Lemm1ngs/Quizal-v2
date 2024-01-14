@@ -71,7 +71,7 @@ export default function Login() {
           <div className="flex flex-col w-full">
             <h1 className="text-3xl font-bold">Welcome Back!</h1>
             <p>
-              Don't have an account yet?{" "}
+              Don&apos;t have an account yet?{" "}
               <Link href="/register" className="underline">
                 Register instead
               </Link>

@@ -9,10 +9,10 @@ export default function Home() {
           <div className="flex-grow flex-col w-full justify-center gap-5 flex items-center ">
             <h1 className="text-4xl font-bold text-blue-400">Quizal</h1>
             <p className="text-center">
-              Boost your exam success and level up your learning with Quizal's
-              engaging gamemodes, where you earn rewards by acing quizzes,
-              participating in contests, and unlocking new levels of academic
-              achievement.
+              Boost your exam success and level up your learning with
+              Quizal&apos;s engaging gamemodes, where you earn rewards by acing
+              quizzes, participating in contests, and unlocking new levels of
+              academic achievement.
             </p>
             <Link
               href="/register"
