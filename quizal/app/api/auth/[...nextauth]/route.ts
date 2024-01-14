@@ -13,6 +13,7 @@ const authOptions = {
       credentials: {
         username: { label: "Username", type: "text" },
         password: { label: "Password", type: "password" },
+        email: { label: "Email", type: "email" },
       },
       async authorize(credentials) {
         //console.log(credentials);
