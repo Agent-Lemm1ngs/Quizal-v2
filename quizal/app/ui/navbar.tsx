@@ -11,7 +11,7 @@ export default function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div>
+    <div className="sticky top-0 z-50">
       <ul className="bg-white p-3 flex flex-row w-full gap-5 border-b-2 border-blue-200">
         <Image src="/logo.svg" width={50} height={50} alt="logo" />
         <Link href="/" className="btn btn-primary text-blue-400">

@@ -7,71 +7,66 @@ import { useRouter, useSearchParams } from "next/navigation";
 import "react-toastify/dist/ReactToastify.css";
 import { type NextRequest } from "next/server";
 import { signIn, useSession } from "next-auth/react";
-import Captcha from "../ui/captcha";
-function check_session() {
-  const session = useSession();
-  if (session) {
-    return true;
-  }
-  return false;
-}
-export default function Login() {
-  //if (check_session()) {
-  //router.push("/dashboard");
-  // }
-  const router = useRouter();
-  const searchParams = useSearchParams();
-  const error = searchParams.get("error");
-  console.log(error);
 
-  const handleLogin = async (e) => {
+export default function Login() {
+  const router = useRouter();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  const [data, setData] = useState({
+    username: "",
+    email: "",
+    password: "",
+  });
+  const loginUser = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    const formData = new FormData(e.target);
-    const data = Object.fromEntries(formData);
-    let value = await signIn("credentials", {
-      email: data.email,
-      password: data.password,
-      //callbackUrl: "/dashboard",
-      error: "Custom error message",
+    const toastMessage = toast.loading("Validating credentials...", {
+      position: "top-right",
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: false,
+      draggable: false,
+      progress: undefined,
+      theme: "light",
     });
-    console.log(value);
-    if (true) {
-      if (!value.error) {
-        toast.success("Succesfully logged in! Redirecting...", {
-          position: "top-right",
-          autoClose: 2000,
-          hideProgressBar: false,
-          closeOnClick: false,
-          pauseOnHover: false,
-          draggable: false,
-          progress: undefined,
-          theme: "light",
-        });
-      } else {
-        toast.error(value.error, {
-          position: "top-right",
-          autoClose: 2000,
-          hideProgressBar: false,
-          closeOnClick: false,
-          pauseOnHover: false,
-          draggable: false,
-          progress: undefined,
-          theme: "light",
-        });
-      }
+    const response = await fetch("/api/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    const userInfo = await response.json();
+    const status = await response.status;
+    if (status === 200) {
+      toast.update(toastMessage, {
+        render: userInfo.message,
+        type: "success",
+        isLoading: false,
+        autoClose: 1500,
+      });
+      signIn("credentials", {
+        ...data,
+        callbackUrl: "/dashboard",
+      });
+    } else {
+      toast.update(toastMessage, {
+        render: userInfo.message,
+        type: "error",
+        isLoading: false,
+        autoClose: 1500,
+      });
       setIsLoading(false);
     }
   };
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-
   return (
-    <main className="flex flex-col bg-blue-100 items-center w-full h-screen p-5">
+    <main className="flex flex-col bg-blue-100 items-center w-full h-[650px] p-5">
       <ToastContainer />
-      <div className="p-10 border-2 rounded-lg bg-white shadow-xl w-full h-4/5 sm:w-4/5   max-w-4xl gap-10 flex flex-col lg:flex-row">
+      <div className="p-10 border-2 rounded-lg bg-white shadow-xl w-full h-full sm:w-4/5   max-w-4xl gap-10 flex flex-col lg:flex-row">
         <form
           className="flex flex-col gap-5 w-full justify-center h-full items-center md:items-start"
-          onSubmit={handleLogin}
+          onSubmit={loginUser}
         >
           <div className="flex flex-col w-full">
             <h1 className="text-3xl font-bold">Welcome Back!</h1>
@@ -88,6 +83,7 @@ export default function Login() {
               autoComplete="on"
               required
               type="email"
+              onChange={(e) => setData({ ...data, email: e.target.value })}
               name="email"
               placeholder="youremail@email.com"
               className="border-2 p-2 duration-75 w-full outline-none focus:border-blue-400 focus:shadow rounded"
@@ -100,18 +96,17 @@ export default function Login() {
               required
               type="password"
               name="password"
+              onChange={(e) => setData({ ...data, password: e.target.value })}
               placeholder="••••••••"
               className="border-2 p-2 duration-75 w-full outline-none focus:border-blue-400 focus:shadow rounded"
             />
           </div>
-          <Captcha className="w-full" />
           <h1 className="italic text-gray-400">
             By pressing Login, you agree to our{" "}
             <Link href="/terms" className="hover:underline">
               Terms and Conditions
             </Link>
           </h1>
-          {error && <h1 className="text-red-500">{error}</h1>}
           <button
             type="submit"
             className="btn border-2 border-blue-400 font-bold text-xl p-3 rounded w-full disabled:cursor-progress disabled:opacity-50"
@@ -120,13 +115,8 @@ export default function Login() {
             {isLoading ? "Loading..." : "Login"}
           </button>
         </form>
-        <div className="flex w-full h-full relative">
-          <Image
-            src="/drawings/clouds.svg"
-            alt="clouds"
-            className="w-auto"
-            fill={true}
-          />
+        <div className="flex w-full h-full  items-center justify-center relative">
+          <Image src="/drawings/clouds.svg" alt="clouds" fill={true} />
         </div>
       </div>
     </main>

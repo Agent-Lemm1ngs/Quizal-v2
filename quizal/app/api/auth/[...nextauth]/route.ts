@@ -1,5 +1,71 @@
 import NextAuth from "next-auth";
-import options from "./options";
-const handler = NextAuth(options);
+import CredentialsProvider from "next-auth/providers/credentials";
+import bcrypt from "bcrypt";
+import { PrismaAdapter } from "@auth/prisma-adapter";
+import { PrismaClient } from "@prisma/client";
+const prisma = new PrismaClient();
 
+const authOptions = {
+  adapter: PrismaAdapter(prisma),
+  providers: [
+    CredentialsProvider({
+      name: "Credentials",
+      credentials: {
+        username: { label: "Username", type: "text" },
+        password: { label: "Password", type: "password" },
+      },
+      async authorize(credentials) {
+        //console.log(credentials);
+
+        if (!credentials.email || !credentials.password) {
+          return null;
+        }
+
+        const exist = await prisma.user.findUnique({
+          where: {
+            email: credentials.email,
+          },
+        });
+        if (!exist) {
+          return null;
+        }
+
+        let result; // Move the variable declaration here
+
+        try {
+          result = await new Promise((resolve, reject) => {
+            bcrypt.compare(credentials.password, exist.password, (err, res) => {
+              if (!res) {
+                reject(res);
+              } else {
+                resolve(res);
+              }
+            });
+          });
+        } catch (err) {
+          console.log(err);
+        }
+
+        console.log(result);
+        if (!result) {
+          // Passwords do not match
+          return null;
+        } else {
+          console.log(exist);
+          return { ...exist, username: exist.username };
+        }
+      },
+    }),
+  ],
+  secret: process.env.NEXTAUTH_SECRET,
+  session: {
+    strategy: "jwt",
+  },
+  debugger: process.env.NODE_ENV === "development",
+  pages: {
+    signIn: "/login",
+  },
+};
+
+const handler = NextAuth(authOptions);
 export { handler as GET, handler as POST };

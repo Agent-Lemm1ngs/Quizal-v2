@@ -5,7 +5,7 @@ export default function Terms() {
         <h1 className="text-3xl font-bold uppercase text-blue-500">
           <strong>Terms and Conditions </strong>
         </h1>
-        <div class="flex flex-col gap-2">
+        <div className="flex flex-col gap-2">
           <h2 className="text-xl uppercase font-bold">Welcome to Quizal!</h2>
 
           <p>
