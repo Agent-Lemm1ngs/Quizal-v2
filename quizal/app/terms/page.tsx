@@ -22,11 +22,13 @@ export default function Terms() {
           <p>
             The following terminology applies to these Terms and Conditions,
             Privacy Statement and Disclaimer Notice and all Agreements:
-            "Client", "You" and "Your" refers to you, the person log on this
-            website and compliant to the Company’s terms and conditions. "The
-            Company", "Ourselves", "We", "Our" and "Us", refers to our Company.
-            "Party", "Parties", or "Us", refers to both the Client and
-            ourselves. All terms refer to the offer, acceptance and
+            &quot;Client&quot;, &quot;You&quot; and &quot;Your&quot; refers to
+            you, the person log on this website and compliant to the Company’s
+            terms and conditions. &quot;The Company&quot;,
+            &quot;Ourselves&quot;, &quot;We&quot;, &quot;Our&quot; and
+            &quot;Us&quot;, refers to our Company. &quot;Party&quot;,
+            &quot;Parties&quot;, or &quot;Us&quot;, refers to both the Client
+            and ourselves. All terms refer to the offer, acceptance and
             consideration of payment necessary to undertake the process of our
             assistance to the Client in the most appropriate manner for the
             express purpose of meeting the Client’s needs in respect of
@@ -65,15 +67,34 @@ export default function Terms() {
           <p>
             Parts of this app offer an opportunity for users to post and
             exchange opinions and information in certain areas of the website.
-            Quizal does not filter, edit, publish or review ("Cards", "Decks")
-            prior to their presence on the website. ("Cards", "Decks") do not
-            reflect the views and opinions of Quizal, its agents and/or
-            affiliates. ("Cards", "Decks") reflect the views and opinions of the
-            person who post their views and opinions. To the extent permitted by
-            applicable laws, Quizal shall not be liable for the ("Cards",
-            "Decks") or for any liability, damages or expenses caused and/or
-            suffered as a result of any use of and/or posting of and/or
-            appearance of the ("Cards", "Decks") on this website.
+            Quizal does not filter, edit, publish or review (&quot;Cards&quot;,
+            &quot;Decks&quot;) prior to their presence on the website.
+            (&quot;Cards&quot;, &quot;Decks&quot;) do not reflect the views and
+            opinions of Quizal, its agents and/or affiliates.
+            (&quot;Cards&quot;, &quot;Decks&quot;) reflect the views and
+            opinions of the person who post their views and opinions. To the
+            extent permitted by applicable laws, Quizal shall not be liable for
+            the (&quot;Cards&quot;, &quot;Decks&quot;) or for any liability,
+            damages or expenses caused and/or suffered as a result of any use of
+            and/or posting of and/or appearance of the (&quot;Cards&quot;,
+            &quot;Decks&quot;) on this website. Quizal reserves the right to
+            monitor all (&quot;Cards&quot;, &quot;Decks&quot;) and to remove any
+            (&quot;Cards&quot;, &quot;Decks&quot;) which can be considered
+            inappropriate, offensive or causes breach of these Terms and
+            Conditions. You warrant and represent that: You are entitled to post
+            the (&quot;Cards&quot;, &quot;Decks&quot;) on our App and have all
+            necessary licenses and consents to do so; The (&quot;Cards&quot;,
+            &quot;Decks&quot;) do not invade any intellectual property right,
+            including without limitation copyright, patent or trademark of any
+            third party; The (&quot;Cards&quot;, &quot;Decks&quot;) do not
+            contain any defamatory, libelous, offensive, indecent or otherwise
+            unlawful material which is an invasion of privacy The
+            (&quot;Cards&quot;, &quot;Decks&quot;) will not be used to solicit
+            or promote business or custom or present commercial activities or
+            unlawful activity. You hereby grant Quizal a non-exclusive license
+            to use, reproduce, edit and authorize others to use, reproduce and
+            edit any of your (&quot;Cards&quot;, &quot;Decks&quot;) in any and
+            all forms, formats or media.
           </p>
 
           <p>
@@ -143,7 +164,7 @@ export default function Terms() {
             other App information so long as the link: (a) is not in any way
             deceptive; (b) does not falsely imply sponsorship, endorsement or
             approval of the linking party and its products and/or services; and
-            (c) fits within the context of the linking party's site.
+            (c) fits within the context of the linking party&apos;s site.
           </p>
 
           <p>
@@ -176,8 +197,8 @@ export default function Terms() {
             These organizations may link to our App so long as the link: (a) is
             not in any way deceptive; (b) does not falsely imply sponsorship,
             endorsement or approval of the linking party and its products or
-            services; and (c) fits within the context of the linking party's
-            site.
+            services; and (c) fits within the context of the linking
+            party&apos;s site.
           </p>
 
           <p>
@@ -198,13 +219,13 @@ export default function Terms() {
             <li>
               By use of any other description of our App being linked to that
               makes sense within the context and format of content on the
-              linking party's site.
+              linking party&apos;s site.
             </li>
           </ul>
 
           <p>
-            No use of Quizal's logo or other artwork will be allowed for linking
-            absent a trademark license agreement.
+            No use of Quizal&apos;s logo or other artwork will be allowed for
+            linking absent a trademark license agreement.
           </p>
         </div>{" "}
         <div class="flex flex-col gap-2">
@@ -235,9 +256,9 @@ export default function Terms() {
             We reserve the right to request that you remove all links or any
             particular link to our App. You approve to immediately remove all
             links to our App upon request. We also reserve the right to amen
-            these terms and conditions and it's linking policy at any time. By
-            continuously linking to our App, you agree to be bound to and follow
-            these linking terms and conditions.
+            these terms and conditions and it&apos;s linking policy at any time.
+            By continuously linking to our App, you agree to be bound to and
+            follow these linking terms and conditions.
           </p>
         </div>
         <div class="flex flex-col gap-2">
@@ -296,15 +317,17 @@ export default function Terms() {
           </p>
         </div>
         <div class="flex flex-col gap-2">
-          <h2 className="text-xl uppercase font-bold">Children's Privacy</h2>
+          <h2 className="text-xl uppercase font-bold">
+            Children&apos;s Privacy
+          </h2>
           <p>
             Our Services are not intended for use by children under the age of
-            13 (“Children”). We do not knowingly collect personally identifiable
-            information from Children under 13. If you become aware that a Child
-            has provided us with Personal Data, please contact us. If we become
-            aware that we have collected Personal Data from Children without
-            verification of parental consent, we take steps to remove that
-            information from our servers.
+            13 (&quot;Children&quot;). We do not knowingly collect personally
+            identifiable information from Children under 13. If you become aware
+            that a Child has provided us with Personal Data, please contact us.
+            If we become aware that we have collected Personal Data from
+            Children without verification of parental consent, we take steps to
+            remove that information from our servers.
           </p>
         </div>
         <div class="flex flex-col gap-2">
@@ -312,10 +335,10 @@ export default function Terms() {
           <p>
             Our Service may contain links to other sites that are not operated
             by us. If you click a third party link, you will be directed to that
-            third party's site. We strongly advise you to review the Privacy
-            Policy of every site you visit. We have no control over and assume
-            no responsibility for the content, privacy policies or practices of
-            any third party sites or services.
+            third party&apos;s site. We strongly advise you to review the
+            Privacy Policy of every site you visit. We have no control over and
+            assume no responsibility for the content, privacy policies or
+            practices of any third party sites or services.
           </p>
         </div>
         <div class="flex flex-col gap-2">
@@ -326,8 +349,9 @@ export default function Terms() {
             storage is 100% secure. While we strive to use commercially
             acceptable means to protect your Personal Data, we cannot guarantee
             its absolute security. If we discover that any data we have
-            collected is compromised, we will take steps to ensure it doesn't
-            happen again. You will also be notified via the website.
+            collected is compromised, we will take steps to ensure it
+            doesn&apos;t happen again. You will also be notified via the
+            website.
           </p>
         </div>
       </div>
