@@ -7,7 +7,7 @@ const prisma = new PrismaClient();
 
 const authOptions = {
   adapter: PrismaAdapter({
-    prisma,
+    prismaClient: prisma,
     createUser: async (WithoutId) => {
       // Remove the id property from the object
       let { id, ...rest } = WithoutId;
@@ -20,6 +20,7 @@ const authOptions = {
       return created;
     },
   }),
+  // other options...
   // other options...
   providers: [
     CredentialsProvider({
