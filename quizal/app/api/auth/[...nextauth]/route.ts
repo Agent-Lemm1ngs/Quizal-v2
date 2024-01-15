@@ -19,7 +19,7 @@ const authOptions = {
         //console.log(credentials);
 
         if (!credentials || !credentials.email || !credentials.password) {
-          return Promise.resolve(null);
+          return null;
         }
 
         const exist = await prisma.user.findUnique({
@@ -28,7 +28,7 @@ const authOptions = {
           },
         });
         if (!exist) {
-          return Promise.resolve(null);
+          return null;
         }
 
         let result; // Move the variable declaration here
@@ -50,13 +50,14 @@ const authOptions = {
         console.log(result);
         if (!result) {
           // Passwords do not match
-          return Promise.resolve(null);
+          return null;
         } else {
           console.log(exist);
           return {
             password: exist.password,
             username: exist.username, // Adjust the properties as needed
             email: exist.email,
+            id: exist.id,
             // ... other properties ...
           };
         }
