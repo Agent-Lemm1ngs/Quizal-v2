@@ -9,6 +9,8 @@ import Provider from "./context/provider";
 import { ToastContainer } from "react-toastify";
 import Link from "next/link";
 import NavBar from "./ui/navbar";
+import type { Session } from "next-auth";
+
 export const metadata: Metadata = {
   title: "Quizal",
   description:
@@ -18,12 +20,14 @@ import "react-toastify/dist/ReactToastify.css";
 
 export default function RootLayout({
   children,
+  session,
 }: {
   children: React.ReactNode;
+  session: Session;
 }) {
   return (
     <html lang="en">
-      <Provider>
+      <Provider session={session}>
         <Head>
           <meta property="og:image" content="<generated>" />
           <meta
