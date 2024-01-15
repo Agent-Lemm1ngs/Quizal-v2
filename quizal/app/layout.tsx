@@ -9,7 +9,8 @@ import Provider from "./context/provider";
 import { ToastContainer } from "react-toastify";
 import Link from "next/link";
 import NavBar from "./ui/navbar";
-import { useSession } from "next-auth/react";
+import { getServerSession } from "next-auth/next";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 
 export const metadata: Metadata = {
   title: "Quizal",
@@ -18,12 +19,12 @@ export const metadata: Metadata = {
 };
 import "react-toastify/dist/ReactToastify.css";
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
-  session,
 }: {
   children: React.ReactNode;
 }) {
+  const session = await getServerSession(authOptions);
   return (
     <html lang="en">
       <Provider session={session}>
