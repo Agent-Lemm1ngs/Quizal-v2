@@ -9,7 +9,7 @@ import Provider from "./context/provider";
 import { ToastContainer } from "react-toastify";
 import Link from "next/link";
 import NavBar from "./ui/navbar";
-import type { Session } from "next-auth";
+import { useSession } from "next-auth/react";
 
 export const metadata: Metadata = {
   title: "Quizal",
@@ -23,7 +23,6 @@ export default function RootLayout({
   session,
 }: {
   children: React.ReactNode;
-  session: Session;
 }) {
   return (
     <html lang="en">
