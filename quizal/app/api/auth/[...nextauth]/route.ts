@@ -7,20 +7,21 @@ const prisma = new PrismaClient();
 
 const authOptions = {
   adapter: PrismaAdapter(prisma, {
-    createUser: async () => {
+    createUser: async (WithoutId) => {
       // Remove the id property from the object
-      const { id, ...WithoutId } =;
-  
+      const { id, ...WithoutId } = WithoutId;
+
       // Create the without the id property
       const created = await prisma.user.create({
         data: {
           ...WithoutId,
         },
       });
-  
+
       return created;
     },
-  }),  providers: [
+  }),
+  providers: [
     CredentialsProvider({
       name: "Credentials",
       credentials: {
