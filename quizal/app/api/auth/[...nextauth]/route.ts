@@ -18,7 +18,7 @@ const authOptions = {
       async authorize(credentials, req) {
         //console.log(credentials);
 
-        if (!credentials || !credentials.email || !credentials.password,) {
+        if (!credentials || !credentials.email || !credentials.password) {
           return null;
         }
 
