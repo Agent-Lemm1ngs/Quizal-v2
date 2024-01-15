@@ -55,9 +55,7 @@ const authOptions = {
         } else {
           console.log(exist);
           return {
-            username: exist.username, // Adjust the properties as needed
-            email: exist.email,
-            id: exist.id,
+            ...exist,
           };
         }
       },
