@@ -6,7 +6,7 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 const authOptions = {
-  adapter: PrismaAdapter(prisma) as Adapter,
+  adapter: PrismaAdapter(prisma),
   providers: [
     CredentialsProvider({
       name: "Credentials",
@@ -14,12 +14,11 @@ const authOptions = {
         username: { label: "Username", type: "text" },
         password: { label: "Password", type: "password" },
         email: { label: "Email", type: "email" },
-        id: { label: "ID", type: "string" },
       },
       async authorize(credentials, req) {
         //console.log(credentials);
 
-        if (!credentials || !credentials.email || !credentials.password) {
+        if (!credentials || !credentials.email || !credentials.password,) {
           return null;
         }
 
@@ -58,7 +57,6 @@ const authOptions = {
             password: exist.password,
             username: exist.username, // Adjust the properties as needed
             email: exist.email,
-            id: exist.id,
           };
         }
       },
