@@ -55,7 +55,7 @@ const authOptions = {
           console.log(exist);
           return {
             id: exist.id,
-            name: exist.name, // Adjust the properties as needed
+            username: exist.username, // Adjust the properties as needed
             email: exist.email,
             // ... other properties ...
           };
