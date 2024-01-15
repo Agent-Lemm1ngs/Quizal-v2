@@ -4,7 +4,7 @@ import bcrypt from "bcrypt";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
-interface AdapterUser extends PrismaUser {}
+interface AdapterUser extends PrismaClient.User {}
 
 const authOptions = {
   adapter: PrismaAdapter<AdapterUser>(prisma),
