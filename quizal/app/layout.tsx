@@ -20,6 +20,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 export default function RootLayout({
   children,
+  session,
 }: {
   children: React.ReactNode;
 }) {
