@@ -9,7 +9,7 @@ const authOptions = {
   adapter: PrismaAdapter(prisma, {
     createUser: async (WithoutId) => {
       // Remove the id property from the object
-      const { id, ...WithoutId } = WithoutId;
+      let { id, ...WithoutId } = WithoutId;
 
       // Create the without the id property
       const created = await prisma.user.create({
