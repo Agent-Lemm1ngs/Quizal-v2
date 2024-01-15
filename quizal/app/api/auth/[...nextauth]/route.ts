@@ -4,9 +4,10 @@ import bcrypt from "bcrypt";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
+interface AdapterUser extends PrismaUser {}
 
 const authOptions = {
-  adapter: PrismaAdapter(prisma),
+  adapter: PrismaAdapter<AdapterUser>(prisma),
   providers: [
     CredentialsProvider({
       name: "Credentials",
@@ -53,7 +54,12 @@ const authOptions = {
           return null;
         } else {
           console.log(exist);
-          return { ...exist, username: exist.username };
+          return {
+            id: exist.id,
+            name: exist.name, // Adjust the properties as needed
+            email: exist.email,
+            // ... other properties ...
+          };
         }
       },
     }),
