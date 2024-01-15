@@ -10,7 +10,6 @@ import { ToastContainer } from "react-toastify";
 import Link from "next/link";
 import NavBar from "./ui/navbar";
 import { getServerSession } from "next-auth/next";
-
 export const metadata: Metadata = {
   title: "Quizal",
   description:
@@ -26,7 +25,7 @@ export default async function RootLayout({
   const session = await getServerSession();
   return (
     <html lang="en">
-      <Provider session={session}>
+      <Provider>
         <Head>
           <meta property="og:image" content="<generated>" />
           <meta
