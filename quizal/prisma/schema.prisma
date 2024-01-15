@@ -7,8 +7,8 @@ generator client {
   provider = "prisma-client-js"
 }
 model User {
-  id        String    @id @default(auto()) @map("_id") @db.ObjectId
-  email     String    @unique
+  id        String     @map("_id") @db.ObjectId
+  email     String    @unique 
   username  String    @unique
   password  String
   createdOn DateTime  @default(now())
