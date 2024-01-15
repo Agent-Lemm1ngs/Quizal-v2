@@ -14,6 +14,7 @@ const authOptions = {
         username: { label: "Username", type: "text" },
         password: { label: "Password", type: "password" },
         email: { label: "Email", type: "email" },
+        id: { label: "ID", type: "string" },
       },
       async authorize(credentials, req) {
         //console.log(credentials);
@@ -57,6 +58,7 @@ const authOptions = {
             password: exist.password,
             username: exist.username, // Adjust the properties as needed
             email: exist.email,
+            id: exist.id,
           };
         }
       },
