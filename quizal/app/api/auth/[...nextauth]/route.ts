@@ -6,22 +6,7 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 const authOptions = {
-  adapter: PrismaAdapter({
-    prismaClient: prisma,
-    createUser: async (WithoutId) => {
-      // Remove the id property from the object
-      let { id, ...rest } = WithoutId;
-      // Create the object without the id property
-      const created = await prisma.user.create({
-        data: {
-          ...rest,
-        },
-      });
-      return created;
-    },
-  }),
-  // other options...
-  // other options...
+  adapter: PrismaAdapter(prisma),
   providers: [
     CredentialsProvider({
       name: "Credentials",
@@ -29,7 +14,6 @@ const authOptions = {
         username: { label: "Username", type: "text" },
         password: { label: "Password", type: "password" },
         email: { label: "Email", type: "email" },
-        id: { label: "ID", type: "string" },
       },
       async authorize(credentials, req) {
         //console.log(credentials);
@@ -73,7 +57,6 @@ const authOptions = {
             password: exist.password,
             username: exist.username, // Adjust the properties as needed
             email: exist.email,
-            id: exist.id,
           };
         }
       },
