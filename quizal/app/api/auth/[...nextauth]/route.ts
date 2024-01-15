@@ -19,6 +19,7 @@ const authOptions = {
       });
       return created;
     },
+  }),
   // other options...
   providers: [
     CredentialsProvider({
