@@ -14,7 +14,7 @@ export default function Register() {
     email: "",
     password: "",
   });
-  const registerUser = async (e) => {
+  const registerUser = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
     const toastMessage = toast.loading("Registering...", {
