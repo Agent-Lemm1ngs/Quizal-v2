@@ -43,7 +43,7 @@ export default function Terms() {
             </a>
           </p>
         </div>
-        <div class="flex flex-col gap-2">
+        <div className="flex flex-col gap-2">
           <h2 className="text-xl uppercase font-bold">License</h2>
 
           <p>
@@ -133,7 +133,7 @@ export default function Terms() {
             ("Cards", "Decks") in any and all forms, formats or media.
           </p>
         </div>{" "}
-        <div class="flex flex-col gap-2">
+        <div className="flex flex-col gap-2">
           <h2 className="text-xl uppercase font-bold">
             Hyperlinking to our app.
           </h2>
@@ -228,7 +228,7 @@ export default function Terms() {
             linking absent a trademark license agreement.
           </p>
         </div>{" "}
-        <div class="flex flex-col gap-2">
+        <div className="flex flex-col gap-2">
           <h2 className="text-xl uppercase font-bold">iFrames</h2>
 
           <p>
@@ -237,7 +237,7 @@ export default function Terms() {
             presentation or appearance of our App.
           </p>
         </div>{" "}
-        <div class="flex flex-col gap-2">
+        <div className="flex flex-col gap-2">
           <h2 className="text-xl uppercase font-bold">Content Liability</h2>
 
           <p>
@@ -249,7 +249,7 @@ export default function Terms() {
             other violation of, any third party rights.
           </p>
         </div>
-        <div class="flex flex-col gap-2">
+        <div className="flex flex-col gap-2">
           <h2 className="text-xl uppercase font-bold">Reservation of Rights</h2>
 
           <p>
@@ -261,7 +261,7 @@ export default function Terms() {
             follow these linking terms and conditions.
           </p>
         </div>
-        <div class="flex flex-col gap-2">
+        <div className="flex flex-col gap-2">
           <h2 className="text-xl uppercase font-bold">
             Removal of links from our App
           </h2>
@@ -278,7 +278,7 @@ export default function Terms() {
             the website is kept up to date.
           </p>
         </div>{" "}
-        <div class="flex flex-col gap-2">
+        <div className="flex flex-col gap-2">
           <h2 className="text-xl uppercase font-bold">Disclaimer</h2>
           <p>
             To the maximum extent permitted by applicable law, we exclude all
@@ -316,7 +316,7 @@ export default function Terms() {
             loss or damage of any nature.
           </p>
         </div>
-        <div class="flex flex-col gap-2">
+        <div className="flex flex-col gap-2">
           <h2 className="text-xl uppercase font-bold">
             Children&apos;s Privacy
           </h2>
@@ -330,7 +330,7 @@ export default function Terms() {
             remove that information from our servers.
           </p>
         </div>
-        <div class="flex flex-col gap-2">
+        <div className="flex flex-col gap-2">
           <h2 className="text-xl uppercase font-bold">Links to other sites</h2>
           <p>
             Our Service may contain links to other sites that are not operated
@@ -341,7 +341,7 @@ export default function Terms() {
             practices of any third party sites or services.
           </p>
         </div>
-        <div class="flex flex-col gap-2">
+        <div className="flex flex-col gap-2">
           <h2 className="text-xl uppercase font-bold">Security of your data</h2>
           <p>
             The security of your data is important to us but remember that no
