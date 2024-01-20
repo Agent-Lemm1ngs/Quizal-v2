@@ -20,7 +20,7 @@ export default function Login() {
   const loginUser = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-    const toastMessage = toast.loading("Validating credentials...", {
+    const toastMessage = toast.loading("Logging in...", {
       position: "top-right",
       hideProgressBar: false,
       closeOnClick: false,
