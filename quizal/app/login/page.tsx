@@ -17,7 +17,7 @@ export default function Login() {
     email: "",
     password: "",
   });
-  const loginUser = async (e) => {
+  const loginUser = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
     const toastMessage = toast.loading("Validating credentials...", {
