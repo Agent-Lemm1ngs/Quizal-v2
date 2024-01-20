@@ -5,7 +5,6 @@ import { Suspense } from "react";
 const inter = Inter({ subsets: ["latin"] });
 import Script from "next/script";
 import Head from "next/head";
-import Provider from "./context/provider";
 import { ToastContainer } from "react-toastify";
 import Link from "next/link";
 import NavBar from "./ui/navbar";
@@ -22,36 +21,33 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const session = await getServerSession();
   return (
     <html lang="en">
-      <Provider>
-        <Head>
-          <meta property="og:image" content="<generated>" />
-          <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=0"
-          />
-        </Head>
-        <body className={`${inter.className}`}>
-          <NavBar />
-          {children}
-          <ToastContainer closeButton={false} />
-          <div className="w-full flex flex-row p-5 items-center">
-            <div className="flex-grow flex-row gap-2 flex items-center">
-              <Link className="btn  text-blue-400 font-bold text-2xl" href="/">
-                Quizal
-              </Link>
-              <h1>© 2023</h1>
-            </div>
-            <h1 className="justify-end flex-grow flex-row gap-2 flex items-center">
-              <Link className="btn " href="/terms">
-                Terms
-              </Link>
-            </h1>
+      <Head>
+        <meta property="og:image" content="<generated>" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=0"
+        />
+      </Head>
+      <body className={`${inter.className}`}>
+        <NavBar />
+        {children}
+        <ToastContainer closeButton={false} />
+        <div className="w-full flex flex-row p-5 items-center">
+          <div className="flex-grow flex-row gap-2 flex items-center">
+            <Link className="btn  text-blue-400 font-bold text-2xl" href="/">
+              Quizal
+            </Link>
+            <h1>© 2023</h1>
           </div>
-        </body>
-      </Provider>
+          <h1 className="justify-end flex-grow flex-row gap-2 flex items-center">
+            <Link className="btn " href="/terms">
+              Terms
+            </Link>
+          </h1>
+        </div>
+      </body>
     </html>
   );
 }
