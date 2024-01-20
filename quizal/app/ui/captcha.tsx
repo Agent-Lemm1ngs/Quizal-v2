@@ -2,7 +2,11 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 
 export default function Captcha() {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState<{
+    image: string | null;
+    solution: string | null;
+  }>({ image: null, solution: null });
+
   function stop() {
     return false;
   }
