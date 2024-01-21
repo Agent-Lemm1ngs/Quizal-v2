@@ -9,6 +9,8 @@ import { ToastContainer } from "react-toastify";
 import Link from "next/link";
 import NavBar from "./ui/navbar";
 import { getServerSession } from "next-auth/next";
+import ProviderWrapper from "./ProviderWrapper";
+
 export const metadata: Metadata = {
   title: "Quizal",
   description:
@@ -21,6 +23,7 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const session = await getServerSession();
   return (
     <html lang="en">
       <Head>
@@ -31,22 +34,24 @@ export default async function RootLayout({
         />
       </Head>
       <body className={`${inter.className}`}>
-        <NavBar />
-        {children}
-        <ToastContainer closeButton={false} />
-        <div className="w-full flex flex-row p-5 items-center">
-          <div className="flex-grow flex-row gap-2 flex items-center">
-            <Link className="btn  text-blue-400 font-bold text-2xl" href="/">
-              Quizal
-            </Link>
-            <h1>© 2023</h1>
+        <ProviderWrapper session={session}>
+          <NavBar />
+          {children}
+          <ToastContainer closeButton={false} />
+          <div className="w-full flex flex-row p-5 items-center">
+            <div className="flex-grow flex-row gap-2 flex items-center">
+              <Link className="btn  text-blue-400 font-bold text-2xl" href="/">
+                Quizal
+              </Link>
+              <h1>© 2023</h1>
+            </div>
+            <h1 className="justify-end flex-grow flex-row gap-2 flex items-center">
+              <Link className="btn " href="/terms">
+                Terms
+              </Link>
+            </h1>
           </div>
-          <h1 className="justify-end flex-grow flex-row gap-2 flex items-center">
-            <Link className="btn " href="/terms">
-              Terms
-            </Link>
-          </h1>
-        </div>
+        </ProviderWrapper>
       </body>
     </html>
   );
