@@ -5,7 +5,7 @@ import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 import type { NextAuthConfig } from "next-auth";
-export const authOptions: NextAuthOptions = {
+export default NextAuth = {
   adapter: PrismaAdapter(prisma),
   providers: [
     CredentialsProvider({
@@ -89,8 +89,8 @@ export const authOptions: NextAuthOptions = {
     },
   },
 } satisfies NextAuthConfig;
-const handler = NextAuth(authOptions);
-export { handler as GET, handler as POST, handler as auth };
+////const handler = NextAuth(authOptions);
+//export { handler as GET, handler as POST, handler as auth };
 //const handler = NextAuth(authOptions);
 
 //export { handler as GET, handler as POST };
