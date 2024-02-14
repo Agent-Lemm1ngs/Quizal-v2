@@ -11,6 +11,13 @@ interface Session {
     image: string;
   };
 }
+interface User {
+  email: string;
+  username: string;
+  id: string;
+  image: string;
+  // other properties...
+}
 
 const authOptions = {
   providers: [
@@ -27,7 +34,7 @@ const authOptions = {
       session.user.id = sessionUser._id;
       return session;
     },
-    async signIn({ user }) {
+    async signIn({ user }: { user: User }) {
       try {
         await connectDB();
         const userExists = await User.findOne({ email: user.email });
