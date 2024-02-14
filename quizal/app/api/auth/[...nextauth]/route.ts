@@ -11,7 +11,7 @@ const authOptions = {
     }),
   ],
   callbacks: {
-    async session({ session }) {
+    async session({ session: session }) {
       const sessionUser = await User.findOne({
         email: session.user.email,
       });
