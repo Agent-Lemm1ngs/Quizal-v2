@@ -5,10 +5,7 @@ const UserScheme = new Schema({
     required: [true, "Email is required"],
     unique: [true, "Email already exists"],
   },
-  avatar: {
-    type: String,
-    default: "https://djc4ts-3000.csb.app/logo.svg",
-  },
+
   name: {
     type: String,
     required: [true, "Name is required"],

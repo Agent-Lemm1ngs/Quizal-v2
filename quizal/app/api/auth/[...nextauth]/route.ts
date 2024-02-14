@@ -8,13 +8,11 @@ interface Session {
     id: string;
     username: string;
     email: string;
-    avatar: string;
   };
 }
 interface User {
   email: string;
   name: string;
-  avatar: string;
   // other properties...
 }
 
@@ -42,7 +40,6 @@ const authOptions = {
             email: user.email,
             username: user.name.replace(" ", "").toLowerCase(),
             name: user.name,
-            avatar: user.avatar,
           });
         }
         return true;
