@@ -5,9 +5,7 @@ const UserScheme = new Schema({
     required: [true, "Email is required"],
     unique: [true, "Email already exists"],
   },
-  picture: {
-    type: String,
-  },
+
   name: {
     type: String,
     required: [true, "Name is required"],
@@ -26,5 +24,4 @@ const UserScheme = new Schema({
   },
 });
 
-const User = models.User || model("User", UserScheme);
-export default User;
+export default models.User || model("User", UserScheme);
