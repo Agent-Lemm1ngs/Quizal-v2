@@ -46,7 +46,7 @@ const authOptions = {
       credentials?: Record<string, any>;
     }): Promise<boolean | undefined> {
       const { user } = params;
-      const { name, email, image } = user;
+      const { name, email } = user;
 
       try {
         await connectDB();
@@ -57,7 +57,6 @@ const authOptions = {
             email: email,
             username: name.replace(" ", "").toLowerCase(),
             name: name,
-            avatar: image || "default-avatar-url",
           });
         }
 
