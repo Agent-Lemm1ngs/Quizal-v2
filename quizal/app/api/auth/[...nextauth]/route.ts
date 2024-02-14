@@ -6,14 +6,14 @@ import { list } from "postcss";
 interface Session {
   user: {
     id: string;
-    name: string;
+    username: string;
     email: string;
     image: string;
   };
 }
 interface User {
   email: string;
-  username: string;
+  name: string;
   id: string;
   image: string;
   // other properties...
