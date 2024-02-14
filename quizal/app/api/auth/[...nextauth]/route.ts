@@ -10,6 +10,12 @@ interface Session {
     image: string;
   };
 }
+interface Profile {
+  name: string;
+  email: string;
+  image: string;
+  picture: string;
+}
 const authOptions = {
   providers: [
     GoogleProvider({
@@ -25,7 +31,7 @@ const authOptions = {
       session.user.id = sessionUser._id;
       return session;
     },
-    async signIn({ profile }) {
+    async signIn({ profile }: { profile: Profile }) {
       console.log(profile);
       try {
         await connectDB();
