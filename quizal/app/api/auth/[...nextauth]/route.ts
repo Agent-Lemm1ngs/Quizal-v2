@@ -2,6 +2,7 @@ import NextAuth from "next-auth/next";
 import GoogleProvider from "next-auth/providers/google";
 import { connectDB } from "@/utils/database";
 import User from "@/models/user";
+import { list } from "postcss";
 interface Session {
   user: {
     id: string;
@@ -26,12 +27,12 @@ const authOptions = {
       session.user.id = sessionUser._id;
       return session;
     },
-    async signIn({ user }) {
+    async signIn({ user }: { user: any }) {
       try {
         await connectDB();
         const userExists = await User.findOne({ email: user.email });
         if (!userExists) {
-          const user = await User.create({
+          const profile = await User.create({
             email: user.email,
             username: user.name.replace(" ", "").toLowerCase(),
             name: user.name,
