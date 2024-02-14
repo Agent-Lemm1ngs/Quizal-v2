@@ -8,7 +8,7 @@ interface Session {
     id: string;
     username: string;
     email: string;
-    image: string;
+    avatar: string;
   };
 }
 interface User {
