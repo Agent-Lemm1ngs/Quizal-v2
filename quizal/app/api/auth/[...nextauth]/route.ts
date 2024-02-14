@@ -42,7 +42,7 @@ const authOptions = {
             email: user.email,
             username: user.name.replace(" ", "").toLowerCase(),
             name: user.name,
-            avatar: user.picture,
+            avatar: user.avatar,
           });
         }
         return true;
