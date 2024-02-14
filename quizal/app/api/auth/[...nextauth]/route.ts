@@ -38,22 +38,32 @@ const authOptions = {
 
       return session;
     },
-    async signIn({ user }: { user: UserInfo }) {
-      const { name, email } = user;
+    async signIn(params: {
+      user: UserInfo;
+      account: Account | null;
+      profile?: Profile;
+      email?: { verificationRequest?: boolean };
+      credentials?: Record<string, any>;
+    }): Promise<boolean | undefined> {
+      const { user } = params;
+      const { name, email, image } = user;
+
       try {
         await connectDB();
         const userExists = await User.findOne({ email: email });
-        console.log(userExists);
+
         if (!userExists) {
           const profile = await User.create({
             email: email,
             username: name.replace(" ", "").toLowerCase(),
             name: name,
+            avatar: image || "default-avatar-url",
           });
         }
+
         return true;
       } catch (error) {
-        console.log("error!" + error);
+        console.log("Error: " + error);
       }
     },
   },
