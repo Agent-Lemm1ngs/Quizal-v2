@@ -5,14 +5,14 @@ import User from "@/models/user";
 import { list } from "postcss";
 interface Session {
   user: {
-    id: string;
-    username: string;
-    email: string;
+    id: String;
+    username: String;
+    email: String;
   };
 }
 interface UserInfo {
-  email: string;
-  name: string;
+  email: String;
+  name: String;
   // other properties...
 }
 
