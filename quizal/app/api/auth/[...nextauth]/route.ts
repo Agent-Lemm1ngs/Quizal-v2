@@ -8,11 +8,13 @@ interface Session {
     id: string;
     username: string;
     email: string;
+    avatar: string;
   };
 }
 interface UserInfo {
   email: string;
   name: string;
+  image: string;
   // other properties...
 }
 
@@ -25,26 +27,36 @@ const authOptions = {
   ],
   callbacks: {
     async session({ session }: { session: Session }) {
+      console.log(session);
       const sessionUser = await User.findOne({
         email: session.user.email,
       });
-      session.user.id = sessionUser._id;
+      console.log(sessionUser);
+      session.user = {
+        id: sessionUser._id,
+        avatar: session.user.image,
+        username: sessionUser.username,
+        email: sessionUser.email,
+      };
+
       return session;
     },
     async signIn({ user }: { user: UserInfo }) {
+      const { name, email } = user;
       try {
         await connectDB();
-        const userExists = await User.findOne({ email: user.email });
+        const userExists = await User.findOne({ email: email });
         if (!userExists) {
           const profile = await User.create({
-            email: user.email,
-            username: user.name.replace(" ", "").toLowerCase(),
-            name: user.name,
+            email: email,
+            username: name.replace(" ", "").toLowerCase(),
+            name: name,
+            avatar: user.image,
           });
         }
         return true;
       } catch (error) {
-        console.log(error);
+        console.log("error!" + error);
       }
     },
   },

@@ -5,6 +5,7 @@ import { useSession, signIn, signOut } from "next-auth/react";
 import { connectDB } from "@/utils/database";
 export default function Home() {
   const { data: session } = useSession();
+  console.log("usersession");
   console.log(session);
   return (
     <main className="flex flex-col  ">

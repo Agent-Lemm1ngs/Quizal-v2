@@ -14,6 +14,9 @@ const UserScheme = new Schema({
     type: String,
     default: `user${Math.floor(Math.random() * 1001)}`,
   },
+  avatar: {
+    type: String,
+  },
   permissions: {
     type: Number,
     default: 0,
