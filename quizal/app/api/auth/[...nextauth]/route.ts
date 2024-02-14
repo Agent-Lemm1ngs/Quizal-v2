@@ -27,7 +27,7 @@ const authOptions = {
       session.user.id = sessionUser._id;
       return session;
     },
-    async signIn({ user }: { user: any }) {
+    async signIn({ user }) {
       try {
         await connectDB();
         const userExists = await User.findOne({ email: user.email });
