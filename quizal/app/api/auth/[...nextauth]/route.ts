@@ -11,11 +11,11 @@ const authOptions = {
     }),
   ],
   callbacks: {
-    async session({ session, token, user }) {
+    async session({ session }) {
       const sessionUser = await User.findOne({
         email: session.user.email,
       });
-      session.user.id = sessionsUser._id;
+      session.user.id = sessionUser._id;
       return session;
     },
     async signIn({ profile }) {
