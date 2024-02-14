@@ -8,13 +8,11 @@ interface Session {
     id: string;
     username: string;
     email: string;
-    avatar: string;
   };
 }
 interface UserInfo {
   email: string;
   name: string;
-  image: string;
   // other properties...
 }
 
@@ -34,7 +32,6 @@ const authOptions = {
       console.log(sessionUser);
       session.user = {
         id: sessionUser._id,
-        avatar: session.user.image,
         username: sessionUser.username,
         email: sessionUser.email,
       };
@@ -46,12 +43,12 @@ const authOptions = {
       try {
         await connectDB();
         const userExists = await User.findOne({ email: email });
+        console.log(userExists);
         if (!userExists) {
           const profile = await User.create({
             email: email,
             username: name.replace(" ", "").toLowerCase(),
             name: name,
-            avatar: user.image,
           });
         }
         return true;
