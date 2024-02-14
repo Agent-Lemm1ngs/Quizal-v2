@@ -6,7 +6,7 @@ import { list } from "postcss";
 interface Session {
   user: {
     id: string;
-    username: string;
+    name: string;
     email: string;
     image: string;
   };
