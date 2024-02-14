@@ -26,17 +26,16 @@ const authOptions = {
       session.user.id = sessionUser._id;
       return session;
     },
-    async signIn({ profile }: { profile: User }) {
-      console.log(profile);
+    async signIn({ user }) {
       try {
         await connectDB();
-        const userExists = await User.findOne({ email: profile.email });
+        const userExists = await User.findOne({ email: user.email });
         if (!userExists) {
           const user = await User.create({
-            email: profile.email,
-            username: profile.name.replace(" ", "").toLowerCase(),
-            name: profile.name,
-            avatar: profile.picture,
+            email: user.email,
+            username: user.name.replace(" ", "").toLowerCase(),
+            name: user.name,
+            avatar: user.picture,
           });
         }
         return true;
