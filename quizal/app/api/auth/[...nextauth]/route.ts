@@ -14,7 +14,6 @@ interface Session {
 interface User {
   email: string;
   name: string;
-  id: string;
   picture: string;
   // other properties...
 }
