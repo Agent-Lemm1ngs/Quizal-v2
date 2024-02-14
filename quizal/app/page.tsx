@@ -1,7 +1,11 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
-
+import { useSession, signIn, signOut } from "next-auth/react";
+import { connectDB } from "@/utils/database";
 export default function Home() {
+  const { data: session } = useSession();
+  console.log(session);
   return (
     <main className="flex flex-col  ">
       <div className="w-full flex flex-col bg-blue-50">

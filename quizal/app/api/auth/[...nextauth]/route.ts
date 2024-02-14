@@ -1,96 +1,46 @@
-import NextAuth, { getHandlers, NextAuthOptions } from "next-auth";
-import CredentialsProvider from "next-auth/providers/credentials";
-import bcrypt from "bcrypt";
-import { PrismaAdapter } from "@next-auth/prisma-adapter";
-import { PrismaClient } from "@prisma/client";
-const prisma = new PrismaClient();
-import type { NextAuthConfig } from "next-auth";
-export default NextAuth = {
-  adapter: PrismaAdapter(prisma),
+import NextAuth from "next-auth/next";
+import GoogleProvider from "next-auth/providers/google";
+import { connectDB } from "@/utils/database";
+import User from "@/models/user";
+
+export const authOptions = {
   providers: [
-    CredentialsProvider({
-      type: "credentials",
-      name: "Credentials",
-      credentials: {
-        username: { label: "Username", type: "text" },
-        password: { label: "Password", type: "password" },
-        email: { label: "Email", type: "email" },
-        id: { label: "ID", type: "string" },
-      },
-      async authorize(credentials, req) {
-        //console.log(credentials);
-
-        if (!credentials || !credentials.email || !credentials.password) {
-          return null;
-        }
-
-        const exist = await prisma.user.findUnique({
-          where: {
-            email: credentials.email,
-          },
-        });
-        if (!exist) {
-          return null;
-        }
-
-        let result; // Move the variable declaration here
-
-        try {
-          result = await new Promise((resolve, reject) => {
-            bcrypt.compare(credentials.password, exist.password, (err, res) => {
-              if (!res) {
-                reject(res);
-              } else {
-                resolve(res);
-              }
-            });
-          });
-        } catch (err) {
-          console.log(err);
-        }
-
-        if (!result) {
-          // Passwords do not match
-          return null;
-        } else {
-          console.log("LOGGED IN!", exist);
-          return exist;
-        }
-      },
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),
   ],
-  secret: process.env.NEXTAUTH_SECRET,
-  session: {
-    strategy: "jwt" as const,
-    maxAge: 24 * 60 * 60 * 30, // 24 hours (adjust as needed)
+  callbacks: {
+    async session({ session }) {
+      const sessionUser = await User.findOne({
+        email: session.user.email,
+      });
+      session.user.id = sessionUser._id;
+      return session;
+    },
+    async signIn({ profile }) {
+      console.log(profile);
+      try {
+        await connectDB();
+        const userExists = await User.findOne({ email: profile.email });
+        if (!userExists) {
+          const user = await User.create({
+            email: profile.email,
+            username: profile.name.replace(" ", "").toLowerCase(),
+            name: profile.name,
+            avatar: profile.picture,
+          });
+        }
+        return true;
+      } catch (error) {
+        console.log(error);
+      }
+    },
   },
-
   pages: {
     signIn: "/login",
   },
-  callbacks: {
-    async jwt({ token, user }) {
-      console.log("JWT Callback - user:", user, token);
-      if (user) {
-        token.user = user;
-        token.id = user.id;
-        return token;
-      }
-      return {}; // Return an empty object instead of null
-    },
-    session({ session, user, token }) {
-      console.log("CALLBACK!", session, user);
-
-      if (session) {
-        console.log("RETURNED TRUE ¬");
-        return session;
-      }
-      return null;
-    },
-  },
-} satisfies NextAuthConfig;
-////const handler = NextAuth(authOptions);
-//export { handler as GET, handler as POST, handler as auth };
-//const handler = NextAuth(authOptions);
-
-//export { handler as GET, handler as POST };
+  secret: process.env.NEXTAUTH_SECRET,
+};
+const handler = NextAuth(authOptions);
+export { handler as GET, handler as POST };

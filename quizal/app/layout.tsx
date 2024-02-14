@@ -7,10 +7,8 @@ import Script from "next/script";
 import Head from "next/head";
 import { ToastContainer } from "react-toastify";
 import Link from "next/link";
-import NavBar from "./ui/navbar";
-import { getServerSession } from "next-auth/next";
-import ProviderWrapper from "./ProviderWrapper";
-
+import NavBar from "./components/ui/navbar";
+import Provider from "./components/Provider";
 export const metadata: Metadata = {
   title: "Quizal",
   description:
@@ -23,7 +21,6 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const session = await getServerSession();
   return (
     <html lang="en">
       <Head>
@@ -34,7 +31,7 @@ export default async function RootLayout({
         />
       </Head>
       <body className={`${inter.className}`}>
-        <ProviderWrapper session={session}>
+        <Provider>
           <NavBar />
           {children}
           <ToastContainer closeButton={false} />
@@ -51,7 +48,7 @@ export default async function RootLayout({
               </Link>
             </h1>
           </div>
-        </ProviderWrapper>
+        </Provider>
       </body>
     </html>
   );
