@@ -29,7 +29,7 @@ const authOptions = {
       });
       console.log(sessionUser);
       session.user = {
-        id: sessionUser._id,
+        _id: sessionUser._id,
         username: sessionUser.username,
         email: sessionUser.email,
       };
