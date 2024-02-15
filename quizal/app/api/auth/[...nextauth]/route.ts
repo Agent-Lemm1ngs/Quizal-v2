@@ -16,6 +16,8 @@ interface Session {
 }
 interface signInUser {
   user: User;
+  name: string;
+  email: string;
   // other properties...
 }
 const authOptions = {
