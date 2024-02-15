@@ -3,29 +3,15 @@ import GoogleProvider from "next-auth/providers/google";
 import { connectDB } from "@/utils/database";
 import User from "@/models/user";
 import { list } from "postcss";
+
+interface User {
+  _id: string;
+  username: string;
+  email: string;
+}
+
 interface Session {
-  user: {
-    id: String;
-    username: String;
-    email: String;
-  };
-}
-interface UserInfo {
-  email: String;
-  name: String;
-  // other properties...
-}
-declare module "next-auth" {
-  /**
-   * Returned by `useSession`, `getSession` and received as a prop on the `SessionProvider` React Context
-   */
-  interface Session {
-    user: {
-      /** The user's postal address. */
-      id: string;
-      username: string;
-    };
-  }
+  user: User;
 }
 
 const authOptions = {
@@ -36,7 +22,7 @@ const authOptions = {
     }),
   ],
   callbacks: {
-    async session({ session }) {
+    async session({ session }: { session: Session }) {
       console.log(session);
       const sessionUser = await User.findOne({
         email: session.user.email,
@@ -50,7 +36,7 @@ const authOptions = {
 
       return session;
     },
-    async signIn({ user }) {
+    async signIn({ user }: { user: User }) {
       const { name, email } = user;
       try {
         await connectDB();
