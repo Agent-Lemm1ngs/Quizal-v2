@@ -15,6 +15,18 @@ interface UserInfo {
   name: String;
   // other properties...
 }
+declare module "next-auth" {
+  /**
+   * Returned by `useSession`, `getSession` and received as a prop on the `SessionProvider` React Context
+   */
+  interface Session {
+    user: {
+      /** The user's postal address. */
+      id: string;
+      username: string;
+    };
+  }
+}
 
 const authOptions = {
   providers: [
@@ -24,7 +36,7 @@ const authOptions = {
     }),
   ],
   callbacks: {
-    async session({ session }: { session: Session }) {
+    async session({ session }) {
       console.log(session);
       const sessionUser = await User.findOne({
         email: session.user.email,
@@ -38,20 +50,11 @@ const authOptions = {
 
       return session;
     },
-    async signIn(params: {
-      user: UserInfo;
-      account: Account | null;
-      profile?: Profile;
-      email?: { verificationRequest?: boolean };
-      credentials?: Record<string, any>;
-    }): Promise<boolean | undefined> {
-      const { user } = params;
+    async signIn({ user }) {
       const { name, email } = user;
-
       try {
         await connectDB();
         const userExists = await User.findOne({ email: email });
-
         if (!userExists) {
           const profile = await User.create({
             email: email,
@@ -59,10 +62,9 @@ const authOptions = {
             name: name,
           });
         }
-
         return true;
       } catch (error) {
-        console.log("Error: " + error);
+        console.log("error!" + error);
       }
     },
   },
