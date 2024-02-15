@@ -4,21 +4,6 @@ import { connectDB } from "@/utils/database";
 import User from "@/models/user";
 import { list } from "postcss";
 
-interface User {
-  _id: string;
-  username: string;
-  email: string;
-  name: string;
-}
-
-interface Session {
-  user: User;
-}
-interface signInUser {
-  user: User;
-
-  // other properties...
-}
 const authOptions = {
   providers: [
     GoogleProvider({
@@ -27,7 +12,7 @@ const authOptions = {
     }),
   ],
   callbacks: {
-    async session({ session }: { session: Session }) {
+    async session({ session }) {
       console.log(session);
       const sessionUser = await User.findOne({
         email: session.user.email,
@@ -42,7 +27,7 @@ const authOptions = {
 
       return session;
     },
-    async signIn({ user }: { user: signInUser }) {
+    async signIn({ user }) {
       const { name, email } = user;
       try {
         await connectDB();
