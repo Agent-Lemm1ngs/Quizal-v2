@@ -13,7 +13,11 @@ interface User {
 interface Session {
   user: User;
 }
-
+interface signInUser {
+  name: string;
+  email: string;
+  // other properties...
+}
 const authOptions = {
   providers: [
     GoogleProvider({
@@ -36,7 +40,7 @@ const authOptions = {
 
       return session;
     },
-    async signIn({ user }: { user: User }) {
+    async signIn({ user }: { user: signInUser }) {
       const { name, email } = user;
       try {
         await connectDB();
