@@ -8,14 +8,14 @@ interface User {
   _id: string;
   username: string;
   email: string;
+  name: string;
 }
 
 interface Session {
   user: User;
 }
 interface signInUser {
-  name: string;
-  email: string;
+  user: User;
   // other properties...
 }
 const authOptions = {
