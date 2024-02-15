@@ -33,6 +33,7 @@ const authOptions = {
       });
       console.log(sessionUser);
       session.user = {
+        name: sessionUser?.name,
         _id: sessionUser._id,
         username: sessionUser.username,
         email: sessionUser.email,
