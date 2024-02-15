@@ -1,17 +1,23 @@
 import NextAuth from "next-auth/next";
-import GoogleProvider from "next-auth/providers/google";
+import googleProvider from "next-auth/providers/google";
 import { connectDB } from "@/utils/database";
 import User from "@/models/user";
 
+interface UserInfo {
+  name?: string;
+  email?: string;
+  username?: string;
+  _id?: string;
+}
 const authOptions = {
   providers: [
-    GoogleProvider({
+    googleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID as string,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
     }),
   ],
   callbacks: {
-    async session({ session }) {
+    async session({ session }: { session: { user: UserInfo } }) {
       console.log(session);
       const sessionUser = await User.findOne({
         email: session.user.email,
@@ -26,15 +32,15 @@ const authOptions = {
 
       return session;
     },
-    async signIn({ user }) {
-      const { name, email } = user;
+    async signIn({ profile }: { profile: { name?: string; email?: string } }) {
+      const { name, email } = profile;
       try {
         await connectDB();
         const userExists = await User.findOne({ email: email });
         if (!userExists) {
           const profile = await User.create({
             email: email,
-            username: name.replace(" ", "").toLowerCase(),
+
             name: name,
           });
         }
